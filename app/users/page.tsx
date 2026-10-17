@@ -1,4 +1,6 @@
 import UsersCard from '@/components/Cards/UsersCard';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 interface User {
   _id: string;
@@ -10,19 +12,18 @@ const UsersPage = async() => {
   const users = await res.json();
   return (
     <div>
-      <h1>
-        Users Page
-      </h1>
-      <p>
-        Total Users: {users.length}
-      </p>
-      <div className='grid grid-cols-3 mt-4'>
-        {
-          users.map((user: User) => <UsersCard key={user._id} user={user}/>)
-        }
+      <h1>Users Page</h1>
+      <p>Total Users: {users.length}</p>
+      <Link href={"/users/new"}>
+        <Button>Add New User</Button>
+      </Link>
+      <div className="mt-4 grid grid-cols-3 gap-4">
+        {users.map((user: User) => (
+          <UsersCard key={user._id} user={user} />
+        ))}
       </div>
     </div>
-  );
+  )
 };
 
 export default UsersPage;
