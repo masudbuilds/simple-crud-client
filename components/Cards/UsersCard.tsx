@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import UpdateUserDialog from "./UpdateUserDialog"
 
 interface User {
   _id: string
@@ -64,7 +65,7 @@ const UsersCard = ({ user }: { user: User }) => {
         <Link href={`/users/${user._id}`}>
           <Button className="w-full">View Details</Button>
         </Link>
-        <Button className="mx-4">Edit</Button>
+        <UpdateUserDialog user={user}/>
         <Button
           onClick={handleDeleteUser}
           variant="destructive"
