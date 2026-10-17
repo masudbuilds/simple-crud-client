@@ -1,9 +1,10 @@
-import React from 'react';
+import UsersCard from '@/components/Cards/UsersCard';
 
-// interface User {
-//   name: string,
-//   email: string,
-// }
+interface User {
+  _id: string;
+  name: string
+  email: string
+}
 const UsersPage = async() => {
   const res = await fetch(`http://localhost:5000/users`);
   const users = await res.json();
@@ -15,6 +16,11 @@ const UsersPage = async() => {
       <p>
         Total Users: {users.length}
       </p>
+      <div className='grid grid-cols-3 mt-4'>
+        {
+          users.map((user: User) => <UsersCard key={user._id} user={user}/>)
+        }
+      </div>
     </div>
   );
 };
