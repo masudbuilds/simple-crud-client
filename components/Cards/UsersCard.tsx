@@ -16,7 +16,7 @@ interface User {
 
 const UsersCard = ({user}: {user: User}) => {
   return (
-    <Card className="relative mx-auto w-full max-w-sm pt-0">
+    <Card className="relative mx-auto w-full max-w-sm pt-0 ">
       <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
       
       <CardHeader>
